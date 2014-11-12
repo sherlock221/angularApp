@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="UserInfoModule">
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>angular form</title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- angular 主文件 -->
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+
+</head>
+<body>
+
+
+     <div class="panel " ng-class="{'panel-primary' : style.panelSkin}">
+
+         <div class="panel-heading">
+            <div class="panel-title">双向数据绑定</div>
+         </div>
+
+         <div class="panel-body">
+                <div class="row">
+                    <form role="form" class="form-horizontal" ng-controller="UserInfoCtrl">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">邮箱:</label>
+                            <div class="col-md-10">
+                                <input type="text" placeholder="请输入xx开头的邮箱"  class="form-control"  ng-model="user.email" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">密码:</label>
+                            <div class="col-md-10">
+                                <input type="password" class="form-control" placeholder="请输入密码"  ng-model="user.password" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- 右侧偏移2个 -->
+                            <div class="col-md-offset-2 col-md-10">
+                                <label>
+                                    <input type="checkbox"  ng-model="user.autoLogin"  /> 记住我
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                             <div class="col-md-offset-2 col-md-10">
+
+                                 <button class="btn btn-default"  ng-click="getFormDate()">获取form表单的值</button>
+                                 <button class="btn btn-default"  ng-click="changeSkin()">改变皮肤</button>
+                                 <button class="btn btn-default"  ng-click="reset()">重置</button>
+
+                             </div>
+                        </div>
+                    </form>
+
+                </div>
+         </div>
+
+     </div>
+
+</body>
+<script type="text/javascript" src="js/form.js"></script>
+</html>
