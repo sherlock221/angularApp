@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>http service</title>
+
+    <!-- angular 主文件 -->
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+</head>
+<body ng-app="MyModule">
+
+    <div ng-controller="ServiceController">
+        <label>用户名:</label>
+        <input type="text"  name="userName" ng-model="username"  placeholder="请输入用户名"/>
+        <pre ng-show="username" >
+                <span ng-repeat="u in users">{{u.userName}},</span>
+        </pre>
+
+    </div>
+</body>
+
+<script type="text/javascript" src="js/httpservice.js"></script>
+</html>
