@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html >
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>angular 动画指令</title>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/ionic/js/angular/angular-animate.js"></script>
+    <script type="text/javascript" src="js/ngAnimation.js"></script>
+
+    <style type="text/css">
+
+        .seq{
+            width: 100px;
+            height: 100px;
+            background: #c0c0c0;
+            margin:  30px auto;
+
+            transition : 0.5s linear all;
+            -webkit-transition: 0.5s linear all;
+        }
+
+
+        .seq.ng-enter { opacity: 0; }        /* starting animations for enter */
+        .seq.ng-enter-active { opacity: 1;} /* terminal animations for enter */
+        .seq.ng-leave { opacity: 1;}        /* starting animations for leave */
+        .seq.ng-leave-active { opacity: 0;} /* terminal animations for leave */
+
+    </style>
+
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body ng-app="MyModule">
+<hello></hello>
+
+</body>
+
+
+      <div ng-if="show"  class="seq"></div>
+     <button  ng-click="show = !show">toggle</button>
+
+
+</html>
