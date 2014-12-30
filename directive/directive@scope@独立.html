@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html >
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>默认$scope false</title>
+    <script type="text/javascript" src="../lib/angular.min.js"></script>
+
+</head>
+<body ng-app="MyModule">
+        <div ng-controller="MyController">
+
+                    <h1>独立scope 不会从父继承 </h1>
+                    <p>
+                        有三种方式 从scope 和父scope 中传递数据
+                    </p>
+
+
+                <expander  expand-title="title">
+                      {{text}}
+                </expander>
+
+
+
+        </div>
+</body>
+
+
+</html>
+
+<script type="text/javascript">
+    var myModule = angular.module("MyModule",[]);
+    myModule.controller("MyController",function($scope){
+        $scope.title = "click me to expand";
+        $scope.text = "这是内容部分";
+
+    });
+
+    //自定义指令
+    myModule.directive("expander",function(){
+        return {
+            restrict : "EA",
+            scope : {
+                //别名
+                expandTitle : "=",
+                title   : "=expandTitle"
+
+            },
+            replace : true,
+            template : '<div> <div class="title" ng-click="toggle();">{{title}}</div>  <div class="body" ng-show="showMe" ng-transclude></div></div>',
+            transclude : true,
+            link : function(scope,element,attr){
+                    scope.showMe = false;
+                    scope.toggle = function(){
+                        scope.showMe = !scope.showMe;
+                    }
+
+                    console.log(scope.expandTitle);
+                    console.log(scope.title);
+            }
+
+        }
+
+    });
+
+</script>

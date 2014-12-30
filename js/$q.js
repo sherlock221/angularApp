@@ -2,9 +2,7 @@
 var myModule = angular.module("MyModule", []);
 
 
-myModule.run(function ($templateCache) {
-
-});
+myModule.run(function ($templateCache) {});
 
 
 myModule.controller("MainCtrl", function ($q, $http) {

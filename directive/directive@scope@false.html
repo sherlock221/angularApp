@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html >
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>默认$scope false</title>
+    <script type="text/javascript" src="../lib/angular.min.js"></script>
+
+</head>
+<body ng-app="MyModule">
+        <div ng-controller="MyController">
+
+                    <h1>指令scope 默认策略为 共享父级scope</h1>
+
+                <hello>
+
+                    <h3>指令内部</h3>
+                    <ul>
+                        <li ng-repeat="user in posts">{{user.userName}}</li>
+                    </ul>
+
+                    <button  ng-click="remove();">删掉一个同学</button>
+                </hello>
+
+            <h3>指令外部</h3>
+            <ul>
+                <li ng-repeat="user in posts">{{user.userName}}</li>
+            </ul>
+            <button  ng-click="remove();">删掉一个同学</button>
+
+        </div>
+</body>
+
+
+</html>
+
+<script type="text/javascript">
+    var myModule = angular.module("MyModule",[]);
+    myModule.controller("MyController",function($scope){
+        $scope.posts = [
+            {
+                "userName" : "小明",
+                "age"   : 20
+            },
+            {
+                "userName" : "小红",
+                "age"   : 12
+            },
+            {
+                "userName" : "小华",
+                "age"   : 33
+            },
+            {
+                "userName" : "小美",
+                "age"   : 33
+            }
+        ];
+
+    });
+
+    //自定义指令
+    myModule.directive("hello",function(){
+        return {
+            restrict : "AE",
+            scope : false, //默认为 共享父类scope
+            link : function(scope,element,attr){
+
+                console.log(scope.posts);
+
+                scope.remove = function(){
+                    //删除最后一项
+                    scope.posts.pop();
+                }
+            }
+
+        }
+
+    });
+
+</script>
