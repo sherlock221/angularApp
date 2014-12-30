@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>angular 事件传播</title>
+
+    <!-- angular 主文件 -->
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+
+</head>
+<body>
+
+
+    <div  ng-controller="eventCtrl">
+
+        root 作用域 <tt>event</tt> count : {{count}}
+
+        <ul>
+            <li ng-repeat="i in [1]"  ng-controller="eventCtrl">
+
+                <button ng-click="$emit('MY EVENT')">$emit('MY EVENT')</button>
+                <button ng-click="$broadcast('MY EVENT')">$broadcast('MY EVENT')</button>
+                <br/>
+
+                Middle作用域 <tt>MyEvent</tt> count:  {{count}}
+                <ul>
+                    <li ng-repeat="item in [1, 2]" ng-controller="eventCtrl">
+                        Leaf作用域<tt>MyEvent</tt> count:  {{count}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+
+
+</body>
+
+    <script type="text/javascript" src="js/propagation.js"></script>
+</html>

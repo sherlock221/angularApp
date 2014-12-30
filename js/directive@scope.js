@@ -1,7 +1,9 @@
 var myModule = angular.module("MyModule",[]);
 
 myModule.controller("MyController",function($scope){
-    $scope.ctrlFlavor = "百威";
+    $scope.user = {
+        userName : "jab"
+    }
 });
 
 myModule.directive("drink",function(){

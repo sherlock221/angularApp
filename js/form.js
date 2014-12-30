@@ -10,10 +10,10 @@ userInfoModule.controller("UserInfoCtrl", ['$scope','$rootScope',function($scope
         panelSkin : true
     }
 
-
     $scope.getFormDate = function(){
         console.log($scope.user);
     }
+
 
     $scope.reset = function(){
         $scope.user = {
@@ -22,6 +22,8 @@ userInfoModule.controller("UserInfoCtrl", ['$scope','$rootScope',function($scope
             autoLogin : false
         };
     }
+
+
 
     $scope.changeSkin = function(){
         $rootScope.style.panelSkin = false;
